@@ -49,7 +49,10 @@ class ProtocUMLGenerator(config: Config) extends ProtocCodeGenerator {
       case (file, content) => CodeGeneratorResponse.File.newBuilder().setName(file).setContent(content).build()
     }
 
-    CodeGeneratorResponse.newBuilder().addAllFile(responseFiles.asJava).build().toByteArray
+    val builder = CodeGeneratorResponse.newBuilder()
+    builder.setSupportedFeatures(CodeGeneratorResponse.Feature.FEATURE_PROTO3_OPTIONAL.getNumber)
+    builder.addAllFile(responseFiles.asJava).build().toByteArray
+
   }
 }
 
