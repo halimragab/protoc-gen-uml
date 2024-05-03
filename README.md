@@ -20,6 +20,16 @@ Currently the compiler plugin only supports [PlantUML](http://plantuml.com/) for
 
 ## Usage
 
+### Docker
+
+Run the commands below replacing PATH_TO_PROTO_FILES to path to your .proto files:
+```bash
+docker build -t protoc-gen-uml .
+docker run -v PATH_TO_PROTO_FILES:/protos -v ./uml:/uml_output protoc-gen-uml
+```
+Output PlantUML file would be in ./uml directory.
+
+### Local
 ```bash
 
 # Checkout latest version from Github
